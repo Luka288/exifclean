@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>image-metadata</title>
+    <script
+      src="https://kit.fontawesome.com/6022f77fe4.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <section id="upload">
+        <div class="wrapper">
+          <div class="ico">
+            <i class="fa-solid fa-file-arrow-up"></i>
+          </div>
+          <div class="heading">
+            <p>Drop your image here</p>
+            <span>Supports JPEG, PNG, TIFF, HEIC, WebP</span>
+          </div>
+
+          <div class="upload-btn">
+            <input type="file" id="fileInput" />
+            <button id="fileUploadInput">Browse file</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="metadata">
+        <div id="img-side">
+          <div class="img-wrapper">
+            <img src="" alt="" id="demoImage" />
+          </div>
+
+          <div class="img-footer">
+            <span id="imageTitle"></span>
+            <span id="imageDetail"></span>
+          </div>
+        </div>
+
+        <div class="dataContainer">
+          <div class="tabs">
+            <ul>
+              <li class="tabNav active" data-type="BASIC">
+                <a>Basic</a>
+              </li>
+              <li class="tabNav" data-type="EXIF">
+                <a>EXIF</a>
+              </li>
+              <li class="tabNav" data-type="GPS">
+                <a>GPS</a>
+              </li>
+              <li class="tabNav" data-type="RAW">
+                <a>Raw</a>
+              </li>
+            </ul>
+          </div>
+          <div class="data"></div>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
