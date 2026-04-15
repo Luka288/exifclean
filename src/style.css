@@ -38,6 +38,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 
   gap: 30px;
 }
@@ -64,6 +65,11 @@ body {
 }
 
 #app #upload:hover {
+  background-color: var(--accent-bg);
+  transition: ease-out 0.3s;
+}
+
+#app #upload.drag-drop {
   background-color: var(--accent-bg);
   transition: ease-out 0.3s;
 }
@@ -257,4 +263,24 @@ body {
   color: var(--text-secondary);
   font-weight: 600;
   text-transform: capitalize;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+
+  display: none;
+}
+
+.spinner {
+  font-size: 30px;
+  color: white;
 }
