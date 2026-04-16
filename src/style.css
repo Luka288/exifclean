@@ -146,8 +146,39 @@ body {
   box-sizing: border-box;
 }
 
-#app #metadata #img-side {
+#app #metadata .card-side {
+  display: flex;
+  flex-direction: column;
   flex: 0 0 280px;
+  gap: 12px;
+}
+
+#app #metadata .card-side .actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#app #metadata .card-side .actions button {
+  min-width: 120px;
+  height: 38px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid var(--border-secondary);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: var(--roboto);
+  border-radius: 15px;
+  transition: 0.3s ease-out;
+  font-weight: 500;
+}
+
+#app #metadata .card-side .actions button:hover {
+  background-color: var(--bg-tertiary);
+  transition: 0.3s ease-in;
+}
+
+#app #metadata .card-side #img-side {
   height: 340px;
   /* height: fit-content; */
   background-color: var(--bg-primary);
@@ -160,20 +191,20 @@ body {
   border-radius: 10px;
 }
 
-#app #metadata #img-side .img-wrapper {
+#app #metadata .card-side #img-side .img-wrapper {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
   padding: 5px;
 }
 
-#app #metadata #img-side .img-wrapper img {
+#app #metadata .card-side #img-side .img-wrapper img {
   width: 170px;
   min-height: 200px;
   object-fit: contain;
 }
 
-#app #metadata #img-side .img-footer {
+#app #metadata .card-side #img-side .img-footer {
   flex: 1;
   background-color: var(--bg-light);
   box-sizing: border-box;
@@ -185,13 +216,13 @@ body {
   border-top: 1px solid var(--border-tertiary);
 }
 
-#app #metadata #img-side .img-footer #imageTitle {
+#app #metadata .card-side #img-side .img-footer #imageTitle {
   color: var(--text-primary);
   font-size: 15px;
   font-weight: 600;
 }
 
-#app #metadata #img-side .img-footer #imageDetail {
+#app #metadata .card-side #img-side .img-footer #imageDetail {
   color: var(--text-secondary);
   font-size: 12px;
 }

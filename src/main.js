@@ -3,6 +3,7 @@ import { extractMetadata } from "./services/metadata.service";
 import { formatSize } from "./utils/formatSize";
 import { formatKey } from "./utils/keyformat";
 import { handleHeic } from "./services/heic.service";
+import { removeMetadata } from "./services/strip.service";
 
 const fileUploadBtn = document.getElementById("fileUploadInput");
 const fileInput = document.getElementById("fileInput");
@@ -10,6 +11,8 @@ const metadataSec = document.getElementById("metadata");
 const demoImage = document.getElementById("demoImage");
 const nav = document.querySelectorAll(".tabNav");
 const upload = document.getElementById("upload");
+const remove = document.getElementById("clearMetadata");
+const downloadBtn = document.getElementById("downloadMetadata");
 
 let currentMetadata = null;
 let currentFile = null;
@@ -187,6 +190,12 @@ function getBasicData(file) {
   };
 }
 
+remove.addEventListener("click", async () => {
+  if (!currentFile) return;
+
+  await removeMetadata(currentFile);
+});
+
 function showLoading() {
   document.querySelector(".overlay").style.display = "flex";
 }
@@ -194,3 +203,18 @@ function showLoading() {
 function hideLoading() {
   document.querySelector(".overlay").style.display = "none";
 }
+
+downloadBtn.addEventListener("click", () => {
+  if (!currentMetadata) return;
+
+  const json = JSON.stringify(currentMetadata, null, 2);
+  const blob = new Blob([json], { type: "application/text" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${currentFile.name}_metadata.txt`;
+  a.click();
+
+  URL.revokeObjectURL(url);
+});
