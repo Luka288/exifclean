@@ -74,8 +74,6 @@ async function handleFile(file) {
 
     let previewUrl;
     let metadata;
-    const imageTitle = document.getElementById("imageTitle");
-    const imageDetail = document.getElementById("imageDetail");
 
     if (isHeic) {
       const converted = await handleHeic(file);
@@ -90,11 +88,6 @@ async function handleFile(file) {
 
     currentMetadata = metadata;
     currentFile = file;
-
-    imageTitle.innerHTML = file.name;
-    imageDetail.innerHTML = file.type
-      ? `${file.type} • ${file.lastModified}`
-      : file.lastModified;
 
     metadataSec.style.display = "flex";
     demoImage.src = previewUrl;
@@ -140,6 +133,9 @@ function renderList(obj) {
   const ul = document.createElement("ul");
   ul.classList.add = "metadataUl";
 
+  const imageTitle = document.getElementById("imageTitle");
+  const imageDetail = document.getElementById("imageDetail");
+
   Object.entries(obj).forEach(([key, value]) => {
     const li = document.createElement("li");
 
@@ -160,6 +156,11 @@ function renderList(obj) {
     `;
     ul.appendChild(mapLi);
   }
+
+  imageTitle.innerHTML = obj.name;
+  imageDetail.innerHTML = obj.type
+    ? `${obj.type} • Last Modified: ${obj.lastModified}`
+    : `Last Modified: ${obj.lastModified}`;
 
   data.appendChild(ul);
 }
